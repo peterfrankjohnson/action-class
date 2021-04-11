@@ -2,6 +2,8 @@
 
 namespace App\Ship\Actions;
 
+use App\Ship\Exceptions\Actions\BaseRepositoryInterfaceException;
+use App\Ship\Exceptions\Actions\NullRepositoryException;
 use App\Ship\Interfaces\Actions\BaseActionInterface;
 use App\Ship\Interfaces\Repositories\BaseRepositoryInterface;
 use Closure;
@@ -108,11 +110,11 @@ abstract class BaseAbstractAction implements BaseActionInterface
         $repository = Arr::get($repositoryMap, $modelClass);
 
         if (null === $repository) {
-            throw new Exception(get_class($this) . ": Repository for {$modelClass} not found in repositoryMap()");
+            throw new NullRepositoryException(get_class($this) . ": Repository for {$modelClass} not found in repositoryMap()");
         }
 
         if (!($repository instanceof BaseRepositoryInterface)) {
-            throw new Exception(get_class($this) . ": Repository for {$modelClass} does not implement BaseRepositoryInterface");
+            throw new BaseRepositoryInterfaceException(get_class($this) . ": Repository for {$modelClass} does not implement BaseRepositoryInterface");
         }
 
         // Check if the model is dirty

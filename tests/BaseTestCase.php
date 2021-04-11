@@ -36,7 +36,7 @@ class BaseTestCase extends TestCase
             'prefix'   => '',
         ]);
 
-        // $app['config']->set('app.debug', env('APP_DEBUG', true));
+        $app['config']->set('app.debug', env('APP_DEBUG', true));
     }
 
     protected function getPackageProviders($app)
