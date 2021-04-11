@@ -26,4 +26,4 @@ Open app/Containers/Example/Actions/WidgetStoreAction.php and read from there tr
 ## Testing
 
 - `vendor/bin/phpunit` (Without coverage) 
-- `vendor/bin/phpunit --coverage-html logs` (With coverage)  
+- `vendor/bin/phpunit --coverage-html logs/html` (With coverage)  
